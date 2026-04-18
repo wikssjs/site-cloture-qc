@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /soumission-cloture/
+
+Sitemap: https://soumission-cloture.ca/sitemap-index.xml
