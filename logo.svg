@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 40" width="230" height="40" role="img" aria-label="Soumission Clôture">
+  <!-- Poteau gauche -->
+  <rect x="1" y="4" width="5" height="34" rx="1.5" fill="#16a34a"/>
+  <!-- Poteau milieu-gauche -->
+  <rect x="13" y="4" width="5" height="34" rx="1.5" fill="#16a34a"/>
+  <!-- Poteau milieu-droit -->
+  <rect x="25" y="4" width="5" height="34" rx="1.5" fill="#16a34a"/>
+  <!-- Poteau droit -->
+  <rect x="37" y="4" width="5" height="34" rx="1.5" fill="#16a34a"/>
+  <!-- Latte haute -->
+  <rect x="1" y="8" width="41" height="4" rx="1.5" fill="#16a34a"/>
+  <!-- Latte basse -->
+  <rect x="1" y="26" width="41" height="4" rx="1.5" fill="#16a34a"/>
+  <!-- Pointe poteaux (chapeau) -->
+  <polygon points="3.5,4 6.5,4 5,1" fill="#16a34a"/>
+  <polygon points="15.5,4 18.5,4 17,1" fill="#16a34a"/>
+  <polygon points="27.5,4 30.5,4 29,1" fill="#16a34a"/>
+  <polygon points="39.5,4 42.5,4 41,1" fill="#16a34a"/>
+  <!-- Text: SOUMISSION -->
+  <text x="55" y="16" font-family="'Segoe UI',system-ui,Arial,sans-serif" font-size="9" font-weight="700" fill="#15803d" letter-spacing="2.5">SOUMISSION</text>
+  <!-- Text: Clôture -->
+  <text x="53" y="34" font-family="'Segoe UI',system-ui,Arial,sans-serif" font-size="20" font-weight="800" fill="#16a34a" letter-spacing="-0.5">Clôture</text>
+</svg>
