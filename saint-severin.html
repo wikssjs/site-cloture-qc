@@ -7,21 +7,21 @@
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Saint-Séverin Cloture 2026 : Bois, Vinyle, Aluminium, Maille | Expert Cloture">
 <meta property="og:description" content="Cloture bois des 2006$ ou vinyle des 1032$ a Saint-Séverin — 5 soumissions gratuites d'experts locaux certifies.">
-<meta property="og:image" content="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop">
+<meta property="og:image" content="https://soumission-cloture.cahttps://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_CA">
 <meta property="og:site_name" content="Expert Cloture">
-<meta property="article:modified_time" content="2026-06-02">
+<meta property="article:modified_time" content="2026-06-10">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Saint-Séverin Cloture 2026 : Bois, Vinyle, Aluminium, Maille | Expert Cloture">
 <meta name="twitter:description" content="Cloture bois des 2006$ ou vinyle des 1032$ a Saint-Séverin — 5 soumissions gratuites d'experts locaux certifies.">
-<meta name="twitter:image" content="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop">
+<meta name="twitter:image" content="https://soumission-cloture.cahttps://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop">
 <meta name="geo.region" content="CA-QC">
 <meta name="geo.placename" content="Saint-Séverin">
 <link rel="canonical" href="https://soumission-cloture.ca/saint-severin">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preload" as="image" href="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop"><title>Saint-Séverin Cloture 2026 : Bois, Vinyle, Aluminium, Maille | Expert Cloture</title>
+<title>Saint-Séverin Cloture 2026 : Bois, Vinyle, Aluminium, Maille | Expert Cloture</title>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 <link rel="stylesheet" href="/style.css">
@@ -43,12 +43,7 @@
           "name": "Mauricie (04)"
         }
       },
-      "priceRange": "$$",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "59"
-      }
+      "priceRange": "$$"
     },
     {
       "@type": "BreadcrumbList",
@@ -882,89 +877,6 @@ function _updateDots(n) {
     } else if (i === n) {
       dot.style.cssText = 'width:1.75rem;height:1.75rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;background:#fff;color:var(--p700)';
       dot.textContent = i;
-    } else {
-      dot.style.cssText = 'width:1.75rem;height:1.75rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;background:rgba(255,255,255,0.2);color:rgba(255,255,255,0.9)';
-      dot.textContent = i;
-    }
-    var line = document.getElementById('line-' + i);
-    if (line) line.style.width = (i < n) ? '100%' : '0%';
-  }
-}
-
-function showStep(n) {
-  document.querySelectorAll('.cl-form-step').forEach(function(s) { s.classList.remove('active'); });
-  var target = document.getElementById('step-' + n);
-  if (target) target.classList.add('active');
-  var lbl = document.getElementById('step-label');
-  var pct = document.getElementById('step-pct');
-  if (lbl) lbl.textContent = _stepLabels[n] || 'Confirmation';
-  if (pct) pct.textContent = 'Étape ' + n + ' de ' + _totalSteps;
-  _updateDots(n);
-  _fStep = n;
-}
-
-function nextStep(n) {
-  var current = document.getElementById('step-' + _fStep);
-  if (!current) { showStep(n); return; }
-  var valid = true;
-  current.querySelectorAll('input[required], select[required], textarea[required]').forEach(function(inp) {
-    if (inp.type === 'radio') return;
-    if (!inp.value.trim()) {
-      valid = false;
-      inp.style.borderColor = '#ef4444';
-      inp.addEventListener('input', function() { inp.style.borderColor = ''; }, {once: true});
-    }
-  });
-  _radioGroups.forEach(function(rg) {
-    if (rg.step !== _fStep) return;
-    var checked = current.querySelector('input[name="' + rg.name + '"]:checked');
-    if (!checked) {
-      valid = false;
-      if (rg.error) {
-        var errEl = document.getElementById(rg.error);
-        if (errEl) { errEl.style.display = 'block'; setTimeout(function() { errEl.style.display = 'none'; }, 3000); }
-      }
-    }
-  });
-  if (!valid) return;
-  showStep(n);
-}
-
-function prevStep(n) { showStep(n); }
-
-var _form = document.getElementById('empire-form');
-if (_form) {
-  _form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    var data = new FormData(_form);
-    fetch('/', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: new URLSearchParams(data).toString()
-    }).then(function() {
-      document.querySelectorAll('.cl-form-step').forEach(function(s) { s.classList.remove('active'); });
-      var merci = document.getElementById('step-merci');
-      if (merci) merci.classList.add('active');
-      _updateDots(_totalSteps + 1);
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'lead_qualifie', {event_category: 'lead', event_label: 'Saint-Séverin', event_value: 1});
-      }
-    }).catch(function() { _form.submit(); });
-  });
-}
-
-var _stickyBar = document.getElementById('sticky-bar');
-if (_stickyBar) {
-  var _formEl = document.getElementById('formulaire');
-  window.addEventListener('scroll', function() {
-    if (_formEl) {
-      var rect = _formEl.getBoundingClientRect();
-      _stickyBar.style.display = (rect.top < window.innerHeight && rect.bottom > 0) ? 'none' : '';
-    }
-  }, {passive: true});
-}
-</script></body>
-</html>i;
     } else {
       dot.style.cssText = 'width:1.75rem;height:1.75rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;background:rgba(255,255,255,0.2);color:rgba(255,255,255,0.9)';
       dot.textContent = i;
