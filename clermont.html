@@ -156,7 +156,7 @@
       <div class="cl-hero__kicker">
         <span class="cl-badge-brand">
           <span class="cl-pulse" style="width:.4rem;height:.4rem;border-radius:50%;background:var(--accent);display:inline-block;flex-shrink:0"></span>
-          16 projets de cloture soumis cette semaine
+          15 projets de cloture soumis cette semaine
         </span>
       </div>
 
@@ -816,7 +816,7 @@ Un entrepreneur compétent pour installer votre clôture à Clermont doit être 
         </p>
         <div class="cl-footer__pulse-row">
           <span class="cl-pulse" style="width:.4375rem;height:.4375rem;border-radius:9999px;background:var(--p500);display:inline-block"></span>
-          16 projets de cloture soumis cette semaine
+          15 projets de cloture soumis cette semaine
         </div>
       </div>
 
@@ -866,101 +866,6 @@ var _stepLabels = {
 var _radioGroups = [
     {step: 1, name: "type-projet", error: "projet-error"},
     {step: 3, name: "delai", error: "delai-error"},
-];
-
-function _updateDots(n) {
-  for (var i = 1; i <= _totalSteps; i++) {
-    var dot = document.getElementById('dot-' + i);
-    if (!dot) continue;
-    if (i < n) {
-      dot.style.cssText = 'width:1.75rem;height:1.75rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;background:#fff;color:var(--p700)';
-      dot.textContent = '✓';
-    } else if (i === n) {
-      dot.style.cssText = 'width:1.75rem;height:1.75rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;background:#fff;color:var(--p700)';
-      dot.textContent = i;
-    } else {
-      dot.style.cssText = 'width:1.75rem;height:1.75rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;background:rgba(255,255,255,0.2);color:rgba(255,255,255,0.9)';
-      dot.textContent = i;
-    }
-    var line = document.getElementById('line-' + i);
-    if (line) line.style.width = (i < n) ? '100%' : '0%';
-  }
-}
-
-function showStep(n) {
-  document.querySelectorAll('.cl-form-step').forEach(function(s) { s.classList.remove('active'); });
-  var target = document.getElementById('step-' + n);
-  if (target) target.classList.add('active');
-  var lbl = document.getElementById('step-label');
-  var pct = document.getElementById('step-pct');
-  if (lbl) lbl.textContent = _stepLabels[n] || 'Confirmation';
-  if (pct) pct.textContent = 'Étape ' + n + ' de ' + _totalSteps;
-  _updateDots(n);
-  _fStep = n;
-}
-
-function nextStep(n) {
-  var current = document.getElementById('step-' + _fStep);
-  if (!current) { showStep(n); return; }
-  var valid = true;
-  current.querySelectorAll('input[required], select[required], textarea[required]').forEach(function(inp) {
-    if (inp.type === 'radio') return;
-    if (!inp.value.trim()) {
-      valid = false;
-      inp.style.borderColor = '#ef4444';
-      inp.addEventListener('input', function() { inp.style.borderColor = ''; }, {once: true});
-    }
-  });
-  _radioGroups.forEach(function(rg) {
-    if (rg.step !== _fStep) return;
-    var checked = current.querySelector('input[name="' + rg.name + '"]:checked');
-    if (!checked) {
-      valid = false;
-      if (rg.error) {
-        var errEl = document.getElementById(rg.error);
-        if (errEl) { errEl.style.display = 'block'; setTimeout(function() { errEl.style.display = 'none'; }, 3000); }
-      }
-    }
-  });
-  if (!valid) return;
-  showStep(n);
-}
-
-function prevStep(n) { showStep(n); }
-
-var _form = document.getElementById('empire-form');
-if (_form) {
-  _form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    var data = new FormData(_form);
-    fetch('/', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: new URLSearchParams(data).toString()
-    }).then(function() {
-      document.querySelectorAll('.cl-form-step').forEach(function(s) { s.classList.remove('active'); });
-      var merci = document.getElementById('step-merci');
-      if (merci) merci.classList.add('active');
-      _updateDots(_totalSteps + 1);
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'lead_qualifie', {event_category: 'lead', event_label: 'Clermont', event_value: 1});
-      }
-    }).catch(function() { _form.submit(); });
-  });
-}
-
-var _stickyBar = document.getElementById('sticky-bar');
-if (_stickyBar) {
-  var _formEl = document.getElementById('formulaire');
-  window.addEventListener('scroll', function() {
-    if (_formEl) {
-      var rect = _formEl.getBoundingClientRect();
-      _stickyBar.style.display = (rect.top < window.innerHeight && rect.bottom > 0) ? 'none' : '';
-    }
-  }, {passive: true});
-}
-</script></body>
-</html>i-error"},
 ];
 
 function _updateDots(n) {
